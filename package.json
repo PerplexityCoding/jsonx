@@ -1,0 +1,29 @@
+{
+  "name": "jsonx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-modules src/server/app.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanatic84/jsonx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fanatic84/jsonx/issues"
+  },
+  "homepage": "https://github.com/fanatic84/jsonx#readme",
+  "devDependencies": {
+    "kaitai-struct": "^0.8.0-SNAPSHOT.11",
+    "kaitai-struct-compiler": "^0.8.0-SNAPSHOT.20180205.11616",
+    "vue": "^2.5.16",
+    "yamljs": "^0.3.0"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
