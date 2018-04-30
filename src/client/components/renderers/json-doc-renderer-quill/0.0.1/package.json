@@ -1,0 +1,26 @@
+{
+  "name": "json-doc-renderer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/bundle.js",
+  "module": "./src/index.js",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fanatic84/jsonx/issues"
+  },
+  "homepage": "https://github.com/fanatic84/jsonx#readme",
+  "scripts": {
+    "build": "webpack --config ./webpack.config.js"
+  },
+  "dependencies": {
+    "quill": "1.3.6"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "css-loader": "^0.28.11",
+    "vue-loader": "^15.0.4",
+    "vue-style-loader": "^4.1.0",
+    "webpack": "^4.6.0"
+  }
+}

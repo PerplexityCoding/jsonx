@@ -1,0 +1,20 @@
+{
+  "type": "jsx",
+  "subtype": "doc",
+  "history": [
+    {
+      "date": "25/12/1984 13:00:45",
+      "renderer": "2.5.0",
+      "data": {
+        "text": "tata"
+      }
+    }
+  ],
+  "data": {
+  },
+  "renderer": {
+    "name": "handsontable-renderer",
+    "version": "0.0.1"
+  },
+  "version": "1.0.1"
+}

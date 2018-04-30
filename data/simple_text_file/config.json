@@ -1,22 +1,24 @@
 {
+  "type": "jsx",
+  "subtype": "doc",
+  "history": [
+    {
+      "date": "25/12/1984 13:00:45",
+      "renderer": "2.5.0",
+      "data": {
+        "text": "tata"
+      }
+    }
+  ],
   "data": {
-    "type": "json",
-    "subtype": "xls"
+    "text": "blah blah"
   },
   "renderer": {
-    "name": "json-excel-renderer",
-    "version": "2.5.1",
+    "name": "json-doc-renderer-quill",
+    "version": "0.0.1",
     "options": {
       "styles": {
         "background-color": "red"
-      },
-      "size": {
-        "row": 50,
-        "col": 30
-      },
-      "mapping": {
-        "cells[i][0]": "prices[i].rent",
-        "cells[i][1]": "prices[i].buy"
       }
     }
   },

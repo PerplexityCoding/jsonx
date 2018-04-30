@@ -1,0 +1,13 @@
+{
+  "name": "json-doc-renderer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fanatic84/jsonx/issues"
+  },
+  "homepage": "https://github.com/fanatic84/jsonx#readme",
+  "dependencies": {}
+}

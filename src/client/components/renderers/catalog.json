@@ -1,0 +1,22 @@
+{
+  "renderers": {
+    "json-doc-renderer": {
+      "0.0.1": {
+        "name": "JsonDocRenderer",
+        "main": "dist/bundle.js"
+      }
+    },
+    "json-doc-renderer-quill": {
+      "0.0.1": {
+        "name": "JsonDocRendererQuill",
+        "main": "dist/bundle.js"
+      }
+    },
+    "handsontable-renderer": {
+      "0.0.1": {
+        "name": "HandsontableRenderer",
+        "main": "dist/bundle.js"
+      }
+    }
+  }
+}

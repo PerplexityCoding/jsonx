@@ -1,0 +1,21 @@
+{
+  "name": "0.0.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bundle.js",
+  "module": "src/index.js",
+  "scripts": {
+    "build": "webpack --config ./webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handsontable": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.6.0"
+  }
+}
