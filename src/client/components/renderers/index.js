@@ -10,15 +10,22 @@ export default class Renderers {
     }
 
     constructor() {
+        this.catalog = {};
+        this.catalogPromise = null;
         this.renderers = {};
+
         this.loadRenderers();
     }
 
     loadRenderers() {
-        axios.get('./components/renderers/catalog.json').then((res) => {
-            const data = res.data;
-            this.renderers = data.renderers;
-        });
+        this.catalogPromise = axios.get('./components/renderers/catalog.json')
+            .then((res) => {
+                const data = res.data;
+                this.catalog = data;
+                this.renderers = data.renderers;
+
+                return this.catalog;
+            });
     }
 
     get(name, version) {
@@ -46,7 +53,8 @@ export default class Renderers {
             s.onerror = function () {
                 reject(`script load ${s.src} failed`);
             };
-            s.src = `./components/renderers/${name}/${version}/${rendererInVersion.main}`;
+            const url = '.';
+            s.src = `${url}/components/renderers/${name}/${version}/${rendererInVersion.main}`;
             document.head.append(s);
         });
     }
@@ -54,6 +62,10 @@ export default class Renderers {
     getFromFile(file) {
         let rendererInfo = file.renderer;
         return this.get(rendererInfo.name, rendererInfo.version);
+    }
+
+    getCatalog() {
+        return this.catalogPromise;
     }
 
 }

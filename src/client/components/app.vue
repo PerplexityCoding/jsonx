@@ -1,28 +1,18 @@
 <template>
     <div id="app">
         <header>
-            <h1>Jsonx</h1>
+            <h1>(j)sonx.io</h1>
+            <input class="search-box" type="text" placeholder="Search your files" />
         </header>
 
         <section class="body">
-            <div class="dropZone bodyContent" @drop.prevent="drop" @dragover.prevent="dragOver" v-if="!renderer">
-                <p>
-                    Drop File Here !
-
-                    {{rendererError}}
-                </p>
-            </div>
-            <div ref="renderer" class="bodyContent" v-show="renderer"></div>
+            <router-view></router-view>
         </section>
 
-        <aside>
-            Menu
-            <button @click="save">Save</button>
-            <a id="download-link"></a>
-        </aside>
-
         <footer>
-            @ MAGL 2018
+            <div class="copyright">
+                JSONX @ MAGL 2018
+            </div>
         </footer>
     </div>
 </template>
@@ -36,64 +26,20 @@
     export default {
         name: 'App',
         methods: {
-            saveData(data, fileName) {
-                const json = JSON.stringify(data);
-                const blob = new Blob([json], {type: "octet/stream"});
-                const url = window.URL.createObjectURL(blob);
-                const $a = document.querySelector('#download-link');
-                $a.href = url;
-                $a.download = fileName;
-                $a.click();
-                window.URL.revokeObjectURL(url);
-            },
-
-            drop(ev) {
-                var files = ev.target.files || ev.dataTransfer.files;
-                console.log(files);
-
-                var reader = new FileReader();
-                reader.onload = (e) => {
-                    // get file content
-                    const file = JSON.parse(e.target.result);
-
-                    const rendererPromise = renderers.getFromFile(file);
-
-                    if (rendererPromise) {
-                        rendererPromise.then((renderer) => {
-                            this.renderer = new renderer(file);
-                            console.log(this.$refs);
-                            this.renderer.render(this.$refs['renderer']);
-                        }).catch((e) => {
-                            this.rendererError = 'Renderer error';
-                        });
-                    } else {
-                        this.rendererError = 'no renderer available';
-                    }
-
-                };
-
-                reader.readAsText(files[0]);
-            },
-
-            dragOver() {},
-
-            save() {
-                this.saveData(this.renderer.data(), 'file.json');
-            }
         },
         data: () => {
             return {
-                rendererError: '',
-                renderer: null,
-                toto: 'hello toto',
             };
         }
     }
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+
     body, h1 {
         margin: 0;
+        font-family: 'Lato', sans-serif;
     }
 
     body * {
@@ -104,47 +50,45 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: 40px auto 40px;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     #app > header {
+        display: flex;
+        color: #fff9f9;
+        background-color: #1aa7e7;
         grid-column: span 12;
     }
 
-    #app .body {
-        padding: 1rem;
-        grid-column: span 10;
-        display: flex;
+    #app > header h1 {
+        font-size: 1.5rem;
+        line-height: 36px;
+        padding-left: 0.5rem;
     }
 
-    #app > aside {
-        grid-column: span 2;
+    #app > .body {
+        grid-column: span 12;
     }
 
     #app > footer {
         grid-column: span 12;
+        line-height: 36px;
+        background-color: firebrick;
+        color: #fef9f9;
     }
 
-    #download-link {
-        display: none;
+    .copyright {
+        margin-left: 0.5rem;
+        font-size: 0.7rem;
     }
 
-    .bodyContent {
-        height: 100%;
-        width: 100%;
-    }
-
-    .dropZone {
-        background-color: #bbd5cf;
-        font-size: 3rem;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-
-    .dropZone p {
-        margin: 0;
-        color: black;
-        text-align: center;
+    .search-box {
+        background: #fff9f9;
+        flex: 1;
+        margin: 7px 2rem;
+        border: none;
+        border-radius: 1rem;
+        padding: 0 0 0 1rem;
+        max-width: 40rem;
     }
 </style>
