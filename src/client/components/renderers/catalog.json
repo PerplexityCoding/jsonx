@@ -3,6 +3,7 @@
     "json-doc-renderer": {
       "latest": "0.0.1",
       "0.0.1": {
+        "id": "json-doc-renderer",
         "name": "JsonDocRenderer",
         "title": "Doc",
         "main": "dist/bundle.js",
@@ -12,6 +13,7 @@
     "json-doc-renderer-quill": {
       "latest": "0.0.1",
       "0.0.1": {
+        "id": "json-doc-renderer-quill",
         "name": "JsonDocRendererQuill",
         "title": "Doc quill",
         "main": "dist/bundle.js",
@@ -22,6 +24,7 @@
     "handsontable-renderer": {
       "latest": "0.0.1",
       "0.0.1": {
+        "id": "handsontable-renderer",
         "name": "HandsontableRenderer",
         "title": "Handsontable",
         "main": "dist/bundle.js",

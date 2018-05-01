@@ -2,9 +2,10 @@ import Vue from 'vue';
 
 export default class VueRenderer {
 
-    constructor(Component, file) {
+    constructor(Component, file, data) {
         this.Component = Component;
         this.file = file;
+        this.data = data;
     }
 
     render($el) {
@@ -17,8 +18,12 @@ export default class VueRenderer {
         }).$mount($el);
     }
 
-    data() {
+    save() {
         const component = this.vm.$children[0];
         return component.json();
+    }
+
+    data() {
+        return this.data;
     }
 }

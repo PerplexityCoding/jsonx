@@ -10,7 +10,6 @@
     export default {
         name: 'JsonDocRendererQuill',
         props: ['file'],
-        methods: {},
         mounted: function () {
             console.log(this.$refs);
             this.editor = new Quill(this.$refs['quillEditor'], {

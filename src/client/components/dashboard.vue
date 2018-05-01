@@ -26,7 +26,7 @@
                                 <sup>{{renderer[renderer.latest].version}}</sup>
                             </div>
 
-                            <div class="list__item__overlay">
+                            <div class="list__item__overlay" @click="createNewFile(renderer[renderer.latest])">
                                 <div class="list__item__overlay__back"></div>
                                 <button class="newBtn">New</button>
                             </div>
@@ -55,6 +55,7 @@
 <script>
     import Vue from 'vue';
     import Renderers from './renderers';
+    import fs from 'fs';
 
     const renderers = Renderers.getInstance();
 
@@ -66,6 +67,24 @@
             });
         },
         methods: {
+            createNewFile(rendererInfo) {
+                renderers.get(rendererInfo.id, rendererInfo.version).then((Renderer) => {
+                    let renderer = new Renderer();
+
+                    const data = {
+                        "type": "jsx",
+                        "subtype": "doc",
+                        "data": {},
+                        "renderer": rendererInfo,
+                        "version": "1.0.1"
+                    };
+
+                    let id = 'my_file_file.jsonx';
+
+                    fs.writeFileSync(id, JSON.stringify(data));
+                    this.$router.push({ name: 'file', params: {fileId: id} });
+                });
+            }
         },
         data: () => {
             return {
@@ -100,6 +119,10 @@
         flex-direction: column;
         display: flex;
         background-color: #f2f5f6;
+    }
+
+    .menu .newBtn {
+        margin: 1rem;
     }
 
     .menu__browser {

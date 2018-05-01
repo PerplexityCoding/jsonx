@@ -28,18 +28,18 @@ export default class Renderers {
             });
     }
 
-    get(name, version) {
-        let renderer = this.renderers[name];
+    get(id, version) {
+        let renderer = this.renderers[id];
         if (renderer) {
             let rendererInVersion = renderer[version];
             if (rendererInVersion) {
-                return this.loadFromServer(name, version, rendererInVersion);
+                return this.loadFromServer(id, version, rendererInVersion);
             }
         }
         return null;
     }
 
-    loadFromServer(name, version, rendererInVersion) {
+    loadFromServer(id, version, rendererInVersion) {
         return new Promise((resolve, reject) => {
             var s = document.createElement("script");
             s.type = "text/javascript";
@@ -54,14 +54,14 @@ export default class Renderers {
                 reject(`script load ${s.src} failed`);
             };
             const url = '.';
-            s.src = `${url}/components/renderers/${name}/${version}/${rendererInVersion.main}`;
+            s.src = `${url}/components/renderers/${id}/${version}/${rendererInVersion.main}`;
             document.head.append(s);
         });
     }
 
     getFromFile(file) {
         let rendererInfo = file.renderer;
-        return this.get(rendererInfo.name, rendererInfo.version);
+        return this.get(rendererInfo.id, rendererInfo.version);
     }
 
     getCatalog() {

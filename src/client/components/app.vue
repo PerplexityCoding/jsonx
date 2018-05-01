@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <header>
-            <h1>(j)sonx.io</h1>
+            <h1><router-link :to="{ name: 'home'}">(j)sonx.io</router-link></h1>
             <input class="search-box" type="text" placeholder="Search your files" />
         </header>
 
@@ -23,6 +23,16 @@
 
     const renderers = Renderers.getInstance();
 
+    BrowserFS.configure({
+        fs: "LocalStorage"
+    }, function(e) {
+        if (e) {
+            // An error happened!
+            throw e;
+        }
+        // Otherwise, BrowserFS is ready-to-use!
+    });
+
     export default {
         name: 'App',
         methods: {
@@ -40,6 +50,11 @@
     body, h1 {
         margin: 0;
         font-family: 'Lato', sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 
     body * {
